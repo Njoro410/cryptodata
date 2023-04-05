@@ -2,7 +2,9 @@ import { useQuery } from "react-query";
 import apiFetch from "./apiFetch";
 
 function App() {
-  // const { data, error, isError, isLoading } = useQuery("coins", apiFetch);
+//  const { data, error, isError, isLoading } = useQuery("coins", apiFetch,{
+//     refetchInterval: 30000,
+//   });
   const data = [
     {
       id: "bitcoin",
@@ -127,30 +129,33 @@ function App() {
   ];
 
   function formatToCurrency(amount) {
-    return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+    return "$" + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
   }
   return (
     <div className="bg-gradient-to-tr from-sky-900 to-gray-800  h-screen">
+      <section className="text-center py-24">
+      <h1 className="font-bold text-4xl md:text-6xl text-slate-100">Your all crypto update site</h1>
+      </section>
       <div className="flex justify-center mx-32">
-        <table className="w-full  text-left border rounded-lg overflow-hidden mt-44">
+        <table className="w-full max-w-md text-left border rounded-lg overflow-hidden shadow-lg ">
           <thead className="bg-gradient-to-tr from-sky-900 to-gray-800 rounded-lg">
             <tr>
-              <th className="px-6 py-3 text-xl font-extrabold text-gray-100 uppercase tracking-wider">
+              <th className="px-6 py-3 text-sm font-extrabold text-gray-100 uppercase tracking-wider">
                 Image
               </th>
-              <th className="px-6 py-3 text-xl font-extrabold text-gray-100 uppercase tracking-wider">
+              <th className="px-6 py-3 text-sm font-extrabold text-gray-100 uppercase tracking-wider">
                 Name
               </th>
-              <th className="px-6 py-3 text-xl font-extrabold text-gray-100 uppercase tracking-wider">
+              <th className="px-6 py-3 text-sm font-extrabold text-gray-100 uppercase tracking-wider">
                 Current Price
               </th>
-              <th className="px-6 py-3 text-xl font-extrabold text-gray-100 uppercase tracking-wider">
+              <th className="px-6 py-3 text-sm font-extrabold text-gray-100 uppercase tracking-wider">
                 Change(24rs)
               </th>{" "}
-              <th className="px-6 py-3 text-xl font-extrabold text-gray-100 uppercase tracking-wider">
+              <th className="px-6 py-3 text-sm font-extrabold text-gray-100 uppercase tracking-wider">
                 Change Percentage(24hrs)
               </th>
-              <th className="px-6 py-3 text-xl font-extrabold text-gray-100 uppercase tracking-wider">
+              <th className="px-6 py-3 text-sm font-extrabold text-gray-100 uppercase tracking-wider">
                 Highest
               </th>
               <th className="px-6 py-3 text-xl font-extrabold text-gray-100 uppercase tracking-wider">
@@ -158,7 +163,7 @@ function App() {
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200">
+          <tbody className="divide-y divide-slate-500">
             {data?.map((coins, id) => (
               <tr key={coins.id}>
                 <td className="px-6 py-4 whitespace-nowrap">
