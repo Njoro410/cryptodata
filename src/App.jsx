@@ -125,31 +125,35 @@ function App() {
       last_updated: "2023-04-05T08:02:52.099Z",
     },
   ];
+
+  function formatToCurrency(amount) {
+    return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+  }
   return (
     <div className="bg-gradient-to-tr from-sky-900 to-gray-800  h-screen">
       <div className="flex justify-center mx-32">
         <table className="w-full  text-left border rounded-lg overflow-hidden mt-44">
-          <thead className="bg-gray-100">
+          <thead className="bg-gradient-to-tr from-sky-900 to-gray-800 rounded-lg">
             <tr>
-              <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-xl font-extrabold text-gray-100 uppercase tracking-wider">
                 Image
               </th>
-              <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-xl font-extrabold text-gray-100 uppercase tracking-wider">
                 Name
               </th>
-              <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-xl font-extrabold text-gray-100 uppercase tracking-wider">
                 Current Price
               </th>
-              <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-xl font-extrabold text-gray-100 uppercase tracking-wider">
                 Change(24rs)
               </th>{" "}
-              <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-xl font-extrabold text-gray-100 uppercase tracking-wider">
                 Change Percentage(24hrs)
               </th>
-              <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-xl font-extrabold text-gray-100 uppercase tracking-wider">
                 Highest
               </th>
-              <th className="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-xl font-extrabold text-gray-100 uppercase tracking-wider">
                 Lowest
               </th>
             </tr>
@@ -171,12 +175,12 @@ function App() {
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="text-sm font-extrabold text-slate-200">
-                    {coins.current_price}
+                    {formatToCurrency(coins.current_price)}
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="text-sm font-extrabold text-slate-200">
-                    {coins.price_change_24h}
+                    {formatToCurrency(coins.price_change_24h)}
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
@@ -185,25 +189,23 @@ function App() {
                       className={
                         coins.price_change_percentage_24h > 0
                           ? "inline-block whitespace-nowrap rounded-[0.27rem] bg-green-500 px-[0.65em] pt-[0.35em] pb-[0.25em] text-center align-baseline  font-bold leading-none text-green-100"
-                          : coins.price_change_percentage_24h < 0 ? "inline-block whitespace-nowrap rounded-[0.27rem] bg-red-500 px-[0.65em] pt-[0.35em] pb-[0.25em] text-center align-baseline  font-bold leading-none text-red-100"
+                          : coins.price_change_percentage_24h < 0
+                          ? "inline-block whitespace-nowrap rounded-[0.27rem] bg-red-500 px-[0.65em] pt-[0.35em] pb-[0.25em] text-center align-baseline  font-bold leading-none text-red-100"
                           : "inline-block whitespace-nowrap rounded-[0.27rem] bg-slate-100 px-[0.65em] pt-[0.35em] pb-[0.25em] text-center align-baseline  font-bold leading-none text-slate-600"
-                          
                       }
                     >
-
                       {coins.price_change_percentage_24h.toFixed(2)}%
-                     
                     </p>
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="text-sm font-extrabold text-slate-200">
-                    {coins.high_24h}
+                    {formatToCurrency(coins.high_24h)}
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="text-sm font-extrabold text-slate-200">
-                    {coins.low_24h}
+                    {formatToCurrency(coins.low_24h)}
                   </div>
                 </td>
               </tr>
