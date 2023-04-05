@@ -15,6 +15,7 @@ function App() {
     <div className="bg-gradient-to-tr from-sky-900 to-gray-800 font-Montserrat h-full ">
       <section className="text-center py-20">
       <h1 className="font-extrabold text-3xl md:text-5xl text-slate-100">YOUR ALL CRYPTO UPDATE SITE</h1>
+      <h1 className="font-extrabold italic text-sm md:text-sm text-slate-100 pt-2">Updates every minute (may not load sometimes(API Limitation))</h1>
       </section>
       <div className="flex justify-center mx-32">
         <table className="w-full max-w-md text-left border rounded-lg overflow-hidden shadow-lg mb-12">
